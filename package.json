@@ -1,0 +1,31 @@
+{
+    "name": "sandbox",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "type": "module",
+    "scripts": {
+        "build": "tspc -P tsconfig.build.json",
+        "prod": "node dist/index.js",
+        "dev": "./dev/node-dev src/index.ts",
+        "test": "NODE_OPTIONS='--import=./dev/import.js' mocha",
+        "coverage": "NODE_OPTIONS='--import=./dev/import.js --enable-source-maps' c8 mocha"
+    },
+    "dependencies": {
+        "tsconfig-paths": "^4.2.0"
+    },
+    "devDependencies": {
+        "@tsconfig/node20": "^20.1.4",
+        "@types/chai": "^4.3.11",
+        "@types/mocha": "^10.0.6",
+        "@types/node": "^20",
+        "c8": "^10.1.2",
+        "chai": "^5.1.1",
+        "mocha": "^10.4.0",
+        "nyc": "^17.0.0",
+        "ts-node": "^10.9.2",
+        "ts-patch": "^3.2.0",
+        "typescript": "^5.4.5",
+        "typescript-transform-paths": "^3.4.7"
+    }
+}
