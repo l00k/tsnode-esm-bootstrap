@@ -46,7 +46,7 @@ case $MODE in
     test)
         MOCHA_OPTIONS=""
         if [[ $INSPECT ]]; then
-            MOCHA_OPTIONS='--node-option"inspect inspect-brk"'
+            MOCHA_OPTIONS='--node-option="inspect inspect-brk"'
         fi
         NODE_OPTIONS="--import=./dev/import.js $NODE_OPTIONS" node node_modules/.bin/mocha $MOCHA_OPTIONS $@
         ;;
