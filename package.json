@@ -5,15 +5,9 @@
     "license": "MIT",
     "type": "module",
     "scripts": {
-        "build": "tspc -P tsconfig.build.json",
-        "prod": "node dist/index.js",
-        "dev": "./dev/node-dev src/index.ts",
-        "test": "NODE_OPTIONS='--import=./dev/import.js' mocha",
-        "coverage": "NODE_OPTIONS='--import=./dev/import.js --enable-source-maps' c8 mocha"
+        "build": "tspc -P tsconfig.build.json"
     },
-    "dependencies": {
-        "tsconfig-paths": "^4.2.0"
-    },
+    "dependencies": {},
     "devDependencies": {
         "@tsconfig/node20": "^20.1.4",
         "@types/chai": "^4.3.11",
@@ -25,6 +19,7 @@
         "nyc": "^17.0.0",
         "ts-node": "^10.9.2",
         "ts-patch": "^3.2.0",
+        "tsconfig-paths": "^4.2.0",
         "typescript": "^5.4.5",
         "typescript-transform-paths": "^3.4.7"
     }

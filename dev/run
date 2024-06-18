@@ -28,30 +28,30 @@ MODE=$1
 shift
 
 
-NODE_OPTIONS="--enable-source-maps"
+OPTIONS="--enable-source-maps"
 
 case $MODE in
     prod)
-        if [[ $INSPECT ]]; then
-            NODE_OPTIONS="$NODE_OPTIONS --inspect --inspect-brk"
+        if [[ $INSPECT == 1 ]]; then
+            OPTIONS="$OPTIONS --inspect --inspect-brk"
         fi
-        NODE_OPTIONS="$NODE_OPTIONS" node $@
+        NODE_OPTIONS="$OPTIONS" node $@
         ;;
     dev)
-        if [[ $INSPECT ]]; then
-            NODE_OPTIONS="$NODE_OPTIONS --inspect --inspect-brk"
+        if [[ $INSPECT == 1 ]]; then
+            OPTIONS="$OPTIONS --inspect --inspect-brk"
         fi
-        NODE_OPTIONS="--import=./dev/import.js $NODE_OPTIONS" node $@
+        NODE_OPTIONS="--import=./dev/import.js $OPTIONS" node $@
         ;;
     test)
         MOCHA_OPTIONS=""
-        if [[ $INSPECT ]]; then
-            MOCHA_OPTIONS='--node-option="inspect inspect-brk"'
+        if [[ $INSPECT == 1 ]]; then
+            MOCHA_OPTIONS="--node-option=inspect --node-option=inspect-brk"
         fi
-        NODE_OPTIONS="--import=./dev/import.js $NODE_OPTIONS" node node_modules/.bin/mocha $MOCHA_OPTIONS $@
+        NODE_OPTIONS="--import=./dev/import.js $OPTIONS" node node_modules/.bin/mocha $MOCHA_OPTIONS $@
         ;;
     coverage)
-        NODE_OPTIONS="--import=./dev/import.js $NODE_OPTIONS" node node_modules/.bin/c8 node_modules/.bin/mocha $@
+        NODE_OPTIONS="--import=./dev/import.js $OPTIONS" node node_modules/.bin/c8 node_modules/.bin/mocha $@
         ;;
     *)
         echo "Invalid mode: $MODE"
